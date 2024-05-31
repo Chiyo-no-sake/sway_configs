@@ -6,7 +6,6 @@ return {
     require("catppuccin").setup({
       default_integration = true,
     })
-    vim.cmd.colorscheme "catppuccin-frappe"
   end
 }
 
