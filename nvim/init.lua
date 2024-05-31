@@ -11,6 +11,18 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- require the global options
 require("vim-options")
+
+
+-- check if custom.lua exists, if it does, load it
+require("utils")
+require("custom")
+if file_exists("$HOME/.config/nvim/lua/custom.lua") then
+  require("custom")
+end
+
+
+-- require the plugins setup
 require("lazy").setup("plugins")
 
