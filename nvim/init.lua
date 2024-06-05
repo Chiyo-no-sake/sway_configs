@@ -26,3 +26,4 @@ end
 -- require the plugins setup
 require("lazy").setup("plugins")
 
+vim.cmd('set termguicolors')

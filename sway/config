@@ -39,7 +39,7 @@ set $run_lock swaylock \
 	--fade-in 0.5 \
         || kill -9 -1
 
-set $change_wallpaper "$HOME/.local/bin/change_wallpaper.py -d $wallpaper_dir; wal -i $wallpaper; $HOME/.local/bin/gen-chromium-theme; $HOME/.local/bin/intellijPywalGen $idea_dir"
+set $change_wallpaper "$HOME/.local/bin/change_wallpaper.py -d $wallpaper_dir; wal -i $wallpaper; $HOME/.local/bin/gen-chromium-theme;"
 set $blueman_applet "blueman-applet"
 ###############################################################################
 ### Daemons
@@ -180,15 +180,15 @@ bar {
 
     # Move workspace to focused output
     bindsym $mod+F1 move workspace number 1 to output current
-    bindsym $mod+F2 workspace number 2 to output current
-    bindsym $mod+F3 workspace number 3 to output current
-    bindsym $mod+F4 workspace number 4 to output current
-    bindsym $mod+F5 workspace number 5 to output current
-    bindsym $mod+F6 workspace number 6 to output current
-    bindsym $mod+F7 workspace number 7 to output current
-    bindsym $mod+F8 workspace number 8 to output current
-    bindsym $mod+F9 workspace number 9 to output current
-    bindsym $mod+F10 workspace number 10 to output current
+    bindsym $mod+F2 move workspace number 2 to output current
+    bindsym $mod+F3 move workspace number 3 to output current
+    bindsym $mod+F4 move workspace number 4 to output current
+    bindsym $mod+F5 move workspace number 5 to output current
+    bindsym $mod+F6 move workspace number 6 to output current
+    bindsym $mod+F7 move workspace number 7 to output current
+    bindsym $mod+F8 move workspace number 8 to output current
+    bindsym $mod+F9 move workspace number 9 to output current
+    bindsym $mod+F10 move workspace number 10 to output current
 #########################
 # Layout: 
 #########################
@@ -305,7 +305,7 @@ titlebar_padding 10 2
 smart_borders off 
 popup_during_fullscreen ignore
 for_window [shell="xwayland"] title_format "%title [XWayland]"
-default_border pixel 4
+default_border pixel 2
 gaps inner 5
 gaps outer 8
 

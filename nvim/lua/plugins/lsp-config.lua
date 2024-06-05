@@ -22,15 +22,17 @@ return {
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
             })
---            lspconfig.tsserver.setup({
---                capabilities = capabilities,
---            })
+
+            lspconfig.solidity.setup({
+                capabilities = capabilities,
+                cmd = { "nomicfoundation-solidity-language-server", "--stdio" },
+                filetypes = { "solidity" },
+                single_file_support = true,
+            })
+
 
             -- shift k to show hover (doc)
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-
-            -- gd to go to definition
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 
             -- gr to show all references 
             vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
@@ -41,9 +43,6 @@ return {
             -- <leader>ca to show code actions
             vim.keymap.set({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, {})
 
-            -- <leader>rn to rename
-            vim.keymap.set({"n", "v"}, "<leader>rn", vim.lsp.buf.rename, {})
-
             -- <leader>e to show under-cursor diagnostic in a floating window
             vim.api.nvim_set_keymap("n", "<leader>e", ":lua vim.diagnostic.open_float(nil, {focus=false, scope=\"cursor\"})<CR>", {})
 
@@ -53,6 +52,9 @@ return {
 
             -- <leader>pe to jump to previous diagnostic
             vim.keymap.set("n", "<leader>pe", vim.diagnostic.goto_prev, {})
+
+
+            -- rename and goto_definition are defined in treesitter.lua
 
         end,
     },
