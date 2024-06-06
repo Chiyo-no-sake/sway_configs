@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- require the global options
-require("vim-options")
+require("options")
 
 
 -- check if custom.lua exists, if it does, load it
