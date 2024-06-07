@@ -63,20 +63,20 @@ return {
 					enable = true,
 					set_jumps = true,
 					goto_next_start = {
-						["nm"] = "@function.outer",
-						["nc"] = "@class.outer",
+						["<leader>nm"] = "@function.outer",
+						["<leader>nc"] = "@class.outer",
 					},
 					goto_next_end = {
-						["nM"] = "@function.outer",
-						["nC"] = "@class.outer",
+						["<leader>nM"] = "@function.outer",
+						["<leader>nC"] = "@class.outer",
 					},
 					goto_previous_start = {
-						["pm"] = "@function.outer",
-						["pc"] = "@class.outer",
+						["<leader>pm"] = "@function.outer",
+						["<leader>pc"] = "@class.outer",
 					},
 					goto_previous_end = {
-						["pM"] = "@function.outer",
-						["pC"] = "@class.outer",
+						["<leader>pM"] = "@function.outer",
+						["<leader>pC"] = "@class.outer",
 					},
 				},
 			},
