@@ -11,7 +11,9 @@ return {
                 "Neotree"
             },
             pre_save_cmds = {
-                "tabdo Neotree close"
+                "tabdo Neotree close",
+                -- closes terminal via toggleterm
+                "tabdo lua require('toggleterm').close_all()"
             },
 		})
 	end,
