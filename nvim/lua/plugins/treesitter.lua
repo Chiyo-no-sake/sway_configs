@@ -33,18 +33,18 @@ return {
 			lsp_interop = { enable = true },
 			refactor = {
 				highlight_definitions = { enable = true, clear_on_cursor_move = true },
-				smart_rename = {
-					enable = true,
-					keymaps = {
-						smart_rename = "<leader>rn",
-					},
-				},
-				navigation = {
-					enable = true,
-					keymaps = {
-						goto_definition_lsp_fallback = "gd",
-					},
-				},
+--				smart_rename = {
+--					enable = true,
+--					keymaps = {
+--						smart_rename = "<leader>rn",
+--					},
+--				},
+--				navigation = {
+--					enable = true,
+--					keymaps = {
+--						goto_definition_lsp_fallback = "gd",
+--					},
+--				},
 			},
 			textobjects = {
 				select = {
