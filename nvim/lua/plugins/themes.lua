@@ -17,6 +17,7 @@ return {
 			local onedark = require("onedark")
 			onedark.setup({
 				style = "warmer",
+                transparent = true,
 			})
 
 			onedark.load()
