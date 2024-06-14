@@ -12,9 +12,9 @@ return {
 
 				-- js
 				--require("none-ls.diagnostics.eslint_d"),
-				null_ls.builtins.formatting.prettier.with({
-                    extra_filetypes = {"solidity"},
-                }),
+				-- null_ls.builtins.formatting.prettier.with({
+				--                 extra_filetypes = {"solidity"},
+				--             }),
 
 				-- python
 				null_ls.builtins.formatting.isort,
@@ -22,6 +22,6 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+		-- vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 	end,
 }
