@@ -93,6 +93,29 @@ return {
             --     capabilities = capabilities,
             -- })
 
+            lspconfig.yamlls.setup({
+                capabilities = capabilities,
+                settings = {
+                    yaml = {
+                        format = {
+                            enable = true,
+                        },
+                        schemas = {
+                            ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "**/*compose*.{yml,yaml}",
+                            ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "**/.gitlab-ci.{yml,yaml}",
+                            ["https://json.schemastore.org/package.json"] = { "**/package.json" },
+                            ["https://json.schemastore.org/eslintrc.json"] = { "**/*eslintrc.{json,yaml,yml}" },
+                            ["https://json.schemastore.org/tsconfig.json"] = { "**/tsconfig.{json,jsonc}" },
+                            ["https://json.schemastore.org/prettierrc.json"] = { "**/.prettierrc.{json,yaml,yml,js}" },
+                        },
+                    },
+                },
+            })
+
+            lspconfig.jsonls.setup({
+                capabilities = capabilities,
+            })
+
             -- shift k to show hover (doc)
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 

@@ -94,7 +94,7 @@ return {
 					goto_previous_start = {
 						["<leader>pm"] = "@function.outer",
 						["<leader>pc"] = "@class.outer",
-                        ["leader>ps"] = "@statement.outer",
+                        ["<leader>ps"] = "@statement.outer",
                         ["<leader>pp"] = "@parameter.outer",
                         ["<leader>pa"] = "@assignment.outer",
                         ["<leader>pl"] = "@loop.outer",
