@@ -50,8 +50,32 @@ return {
                 })
             end
 
+            lspconfig.volar.setup({});
+
             lspconfig.tsserver.setup({
                 capabilities = capabilities,
+                init_options = {
+                    plugins = {
+                        {
+                            name = "@vue/typescript-plugin",
+                            location = "/home/luca/.nvm/versions/node/v18.17.1/lib/node_modules/@vue/typescript-plugin",
+                            languages = {
+                                "javascript",
+                                "typescript",
+                                "vue"
+                            },
+                        },
+                    },
+                },
+                filetypes = {
+                    "javascript",
+                    "typescript",
+                    "typescriptreact",
+                    "javascriptreact",
+                    "javascript.jsx",
+                    "typescript.tsx",
+                    "vue"
+                }
             })
 
             lspconfig.lua_ls.setup({
@@ -65,9 +89,9 @@ return {
                 single_file_support = true,
             })
 
-            lspconfig.tailwindcss.setup({
-                capabilities = capabilities,
-            })
+            -- lspconfig.tailwindcss.setup({
+            --     capabilities = capabilities,
+            -- })
 
             -- shift k to show hover (doc)
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
