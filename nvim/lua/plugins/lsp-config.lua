@@ -51,6 +51,9 @@ return {
             end
 
             lspconfig.volar.setup({});
+            local data_path = vim.fn.stdpath("data")
+            local volarLoc = data_path.."/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
 
             lspconfig.tsserver.setup({
                 capabilities = capabilities,
@@ -58,7 +61,7 @@ return {
                     plugins = {
                         {
                             name = "@vue/typescript-plugin",
-                            location = "/home/luca/.nvm/versions/node/v18.17.1/lib/node_modules/@vue/typescript-plugin",
+                            location = volarLoc,
                             languages = {
                                 "javascript",
                                 "typescript",
