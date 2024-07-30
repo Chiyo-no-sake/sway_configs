@@ -5,6 +5,12 @@ vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set autoindent")
 
+
+-- required settings for vimwiki
+vim.cmd("set nocompatible")
+vim.cmd("filetype plugin on")
+vim.cmd("syntax on")
+
 vim.g.mapleader = " "
 vim.g.have_nerd_font = true
 vim.opt.number = true
