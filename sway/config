@@ -305,7 +305,7 @@ titlebar_padding 10 2
 smart_borders off 
 popup_during_fullscreen ignore
 for_window [shell="xwayland"] title_format "%title [XWayland]"
-default_border pixel 2
+default_border pixel 5
 gaps inner 5
 gaps outer 8
 

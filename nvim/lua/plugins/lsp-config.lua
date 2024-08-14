@@ -42,7 +42,7 @@ return {
                         arguments = { vim.uri_from_bufnr(0) },
                     })
                 else
-                    vim.lsp.buf.execute_command(params, {
+                    vim.lsp.buf.execute_command({
                         command = "_typescript.organizeImports",
                         arguments = { vim.api.nvim_buf_get_name(0) },
                     })
@@ -142,6 +142,7 @@ return {
                 },
                 jsonls = {},
                 helm_ls = {},
+                volar = {},
                 yamlls = {
                     capabilities = capabilities,
                     settings = {
@@ -193,6 +194,8 @@ return {
             require("mason-lspconfig").setup({
                 handlers = {
                     function(server_name)
+                        if(server_name == "vuels") then return end
+
                         local server = servers[server_name] or {}
                         -- Applies custom settings and capabilities defined above
                         server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
@@ -202,7 +205,7 @@ return {
             })
 
             ---- LSP keybindings ----
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover doc" })
+            -- vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover doc" })
             vim.keymap.set("n", "gr", telescope_builtins.lsp_references, { desc = "Go to references" })
             vim.keymap.set("n", "gi", telescope_builtins.lsp_implementations, { desc = "Go to implementation" })
             vim.keymap.set("n", "gd", telescope_builtins.lsp_definitions, { desc = "Go to definition" })

@@ -11,14 +11,15 @@ return {
 				null_ls.builtins.formatting.stylua,
 
 				-- js
-				--require("none-ls.diagnostics.eslint_d"),
+				-- require("none-ls.diagnostics.eslint_d"),
 				-- null_ls.builtins.formatting.prettier.with({
-				--                 extra_filetypes = {"solidity"},
-				--             }),
+				--                  extra_filetypes = {"solidity"},
+				--              }),
 
 				-- python
 				null_ls.builtins.formatting.isort,
 				null_ls.builtins.formatting.black,
+                null_ls.builtins.formatting.prettierd,
 			},
 		})
 
