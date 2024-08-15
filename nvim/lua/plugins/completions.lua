@@ -36,6 +36,15 @@ return {
 					documentation = cmp.config.window.bordered(),
 				},
 				mapping = cmp.mapping.preset.insert({
+					--                ["K"] = cmp.mapping(
+					--                    function(fallback)
+					--                        if cmp.visible_docs() then
+					--                            cmp.close_docs()
+					--                        else
+					--                            cmp.open_docs()
+					--                        end
+					--                    end
+					--                ),
 					["<C-n>"] = cmp.mapping.scroll_docs(-4),
 					["<C-m>"] = cmp.mapping.scroll_docs(4),
                     ["<C-j>"] = cmp.mapping.select_next_item(),

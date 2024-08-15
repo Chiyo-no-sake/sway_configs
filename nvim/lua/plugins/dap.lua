@@ -166,14 +166,11 @@ return {
 
 			-- ^^^^^^^^^ -- JAVASCRIPT & TYPESCRIPT DEBUGGER CONFIGURATION -- ^^^^^^^^^ --
 
-			vim.keymap.set("n", "<Leader>dq", function()
-				dap.disconnect()
-				dap.terminate()
-				dapui.close()
-			end, {})
+			vim.keymap.set("n", "<Leader>dq", dap.terminate, {})
 
 			vim.keymap.set("n", "<Leader>dc", dap.continue, {})
 			vim.keymap.set("n", "<Leader>db", dap.toggle_breakpoint, {})
+			vim.keymap.set("n", "<Leader>du", dapui.toggle, {})
 
 			vim.keymap.set("n", "<F5>", dap.continue, {})
 			vim.keymap.set("n", "<F7>", dap.step_into, {})
