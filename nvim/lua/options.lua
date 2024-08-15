@@ -40,7 +40,7 @@ vim.keymap.set("i", "jj", "<Esc>", { noremap = true })
 -- vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]])
 -- vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]])
 
-vim.keymap.set({ "n", "t" }, "<leader>zz", "vim.cmd('wa') | vim.cmd('qa')", { noremap = true })
+vim.keymap.set({ "n" }, "<leader>zz", ":qa<CR>", { noremap = true })
 
 -- Set the sessionoptions
 -- required for debugging with DAP
