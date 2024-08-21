@@ -31,6 +31,7 @@ vim.opt.splitright = true
 vim.cmd("set nosmd")
 vim.cmd("set noru")
 
+-- exit from insert mode with jj
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true })
 
 -- TODO: not working, need to investigate
@@ -40,7 +41,7 @@ vim.keymap.set("i", "jj", "<Esc>", { noremap = true })
 -- vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]])
 
 -- <leader>zz to save and quit
-vim.keymap.set("n", "<leader>zz", "vim.cmd('wa') | vim.cmd('qa')", { noremap = true })
+vim.keymap.set("n", "<leader>zz", ":wa<CR>:qa<CR>", { noremap = true })
 
 -- <leader>ss to save everything
 vim.keymap.set("n", "<leader>ss", ":wa<CR>", { noremap = true })
