@@ -5,7 +5,6 @@ vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set autoindent")
 
-
 -- required settings for vimwiki
 vim.cmd("set nocompatible")
 vim.cmd("filetype plugin on")
@@ -40,7 +39,11 @@ vim.keymap.set("i", "jj", "<Esc>", { noremap = true })
 -- vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]])
 -- vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]])
 
-vim.keymap.set({ "n", "t" }, "<leader>zz", "vim.cmd('wa') | vim.cmd('qa')", { noremap = true })
+-- <leader>zz to save and quit
+vim.keymap.set("n", "<leader>zz", "vim.cmd('wa') | vim.cmd('qa')", { noremap = true })
+
+-- <leader>ss to save everything
+vim.keymap.set("n", "<leader>ss", ":wa<CR>", { noremap = true })
 
 -- Set the sessionoptions
 -- required for debugging with DAP
