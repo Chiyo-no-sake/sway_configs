@@ -15,7 +15,7 @@ set $up k
 set $right l
 
 set $term kitty
-set $browser google-chrome 
+set $browser firefox
 # set $filemanager "kitty source $HOME/.zshrc && /usr/bin/ranger"
 set $filemanager kitty /bin/zsh -c "source $HOME/.zshrc && ranger"
 set $emojipicker "$HOME/.local/bin/rofimoji -a copy --clipboarder xclip --typer xdotool"
