@@ -35,6 +35,6 @@ return {
 		local notify = require("notify")
 
 		-- notification mappings
-		vim.keymap.set("n", "<leader>mc", notify.dismiss, { noremap = true, silent = true })
+		vim.keymap.set("n", "<leader>nc", notify.dismiss, { noremap = true, silent = true })
 	end,
 }
