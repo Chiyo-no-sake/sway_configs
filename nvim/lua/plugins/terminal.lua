@@ -10,24 +10,8 @@ return {
 			end,
 		})
 
-		-- exit terminal before saving session
-
 		-- keymaps for lazygit
 		local Terminal = require("toggleterm.terminal").Terminal
-		local lazygit = Terminal:new({
-			cmd = "lazygit",
-			direction = "float",
-			hidden = true,
-		})
-
-		function _Lazygit_toggle()
-			lazygit:toggle()
-		end
-
-		vim.api.nvim_set_keymap("n", "<leader>sg", "<cmd>lua _Lazygit_toggle()<CR>", {
-			noremap = true,
-			silent = true,
-		})
 
 		-- keymaps for lazydocker
 		local lazydocker = Terminal:new({
@@ -59,7 +43,7 @@ return {
 			end,
 		})
 		-- keymaps to switch between windows
-		vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+		-- vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
 		vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
 		vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
 		vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
