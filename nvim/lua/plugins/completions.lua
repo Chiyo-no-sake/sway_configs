@@ -7,7 +7,7 @@ return {
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
-            "onsails/lspkind.nvim",
+			"onsails/lspkind.nvim",
 		},
 	},
 	{
@@ -47,8 +47,8 @@ return {
 					--                ),
 					["<C-n>"] = cmp.mapping.scroll_docs(-4),
 					["<C-m>"] = cmp.mapping.scroll_docs(4),
-                    ["<C-j>"] = cmp.mapping.select_next_item(),
-                    ["<C-k>"] = cmp.mapping.select_prev_item(),
+					["<C-j>"] = cmp.mapping.select_next_item(),
+					["<C-k>"] = cmp.mapping.select_prev_item(),
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
@@ -62,16 +62,16 @@ return {
 			})
 		end,
 	},
-	{
-		"github/copilot.vim",
-		config = function()
-			local g = vim.g
-
-			g.copilot_no_tab_map = true
-			vim.keymap.set({ "i" }, "<C-CR>", 'copilot#Accept("\\<CR>")', {
-				expr = true,
-				replace_keycodes = false,
-			})
-		end,
-	},
+	-- 	{
+	-- 		"github/copilot.vim",
+	-- 		config = function()
+	-- 			local g = vim.g
+	--
+	-- 			g.copilot_no_tab_map = true
+	-- 			vim.keymap.set({ "i" }, "<C-CR>", 'copilot#Accept("\\<CR>")', {
+	-- 				expr = true,
+	-- 				replace_keycodes = false,
+	-- 			})
+	-- 		end,
+	-- 	},
 }

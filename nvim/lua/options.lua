@@ -34,12 +34,6 @@ vim.cmd("set noru")
 -- exit from insert mode with jj
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true })
 
--- TODO: not working, need to investigate
--- vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]])
--- vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]])
--- vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]])
--- vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]])
-
 -- <leader>zz to save and quit
 vim.keymap.set("n", "<leader>zz", ":wa<CR>:qa<CR>", { noremap = true })
 
