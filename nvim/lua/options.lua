@@ -4,6 +4,7 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set autoindent")
+vim.cmd("set nospell")
 
 -- required settings for vimwiki
 vim.cmd("set nocompatible")
@@ -24,7 +25,6 @@ vim.opt.signcolumn = "yes"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.gdefault = true
-vim.opt.spell = true
 vim.o.exrc = true
 vim.opt.splitright = true
 

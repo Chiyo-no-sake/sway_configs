@@ -1,0 +1,255 @@
+###############################################################################
+### Variables
+###############################################################################
+
+set $mod Mod4
+set $sup Mod1
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term kitty
+set $browser firefox
+set $filemanager kitty /bin/zsh -c "source $HOME/.zshrc && ranger"
+set $emojipicker "$HOME/.local/bin/rofimoji -a copy --clipboarder xclip --typer xdotool"
+set $menu "rofi -combi-modi window,drun,ssh,run -show combi -show-icons"
+
+set $wallpaper_dir $HOME/Pictures/Wallpapers
+set $idea_dir $HOME/.config/JetBrains/IntelliJIdea2024.1
+
+set $run_lock i3lock \
+	--blur 10 \
+	--clock \
+	--indicator \
+	--radius 100 \
+	--ring-width 7 \
+	--fade-in 0.5
+
+set $change_wallpaper "$HOME/.local/bin/change_wallpaper.py -d $wallpaper_dir; wal -i $wallpaper; $HOME/.local/bin/gen-chromium-theme;"
+set $blueman_applet "blueman-applet"
+###############################################################################
+### Daemons
+###############################################################################
+
+exec_always --no-startup-id killall -q dunst
+exec_always --no-startup-id dunst
+exec_always --no-startup-id nm-applet
+exec_always --no-startup-id $blueman_applet
+
+exec_always --no-startup-id $change_wallpaper
+exec_always --no-startup-id $notification_manager
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+###############################################################################
+### Output configuration
+###############################################################################
+
+# No direct translation for output positioning in i3; use xrandr or arandr
+exec_always --no-startup-id xrandr --output DP-3 --pos 0x0
+exec_always --no-startup-id xrandr --output eDP-1 --pos 1920x0
+
+###############################################################################
+### Input configuration
+###############################################################################
+
+# Use xinput or similar for configuring input devices in i3
+exec_always --no-startup-id xinput set-prop "DELL08E1:00 06CB:CD97 Touchpad" "libinput Tapping Enabled" 1
+exec_always --no-startup-id xinput set-prop "DELL08E1:00 06CB:CD97 Touchpad" "libinput Natural Scrolling Enabled" 1
+
+###############################################################################
+### Bar
+###############################################################################
+
+bar {
+    status_command i3status
+}
+
+###############################################################################
+### Key Bindings 
+###############################################################################
+
+#########################
+# Basics:
+#########################
+
+# Start a terminal
+bindsym $mod+Return exec $term
+
+# Start browser
+bindsym $mod+i exec $browser
+
+# Start file manager
+bindsym $mod+n exec $filemanager
+
+# Kill focused window
+bindsym $mod+q kill
+
+# Start your launcher
+bindsym $mod+Space exec $menu
+
+# Start emoji picker
+bindsym $mod+Shift+e exec $emojipicker
+
+# Drag floating windows by holding down $mod and left mouse button.
+floating_modifier $mod
+
+# Reload the configuration file
+bindsym $mod+Shift+r reload
+
+# Exit i3
+bindsym $mod+Shift+e exit
+
+focus_follows_mouse no
+
+#########################
+# Moving around:
+#########################
+
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+#########################
+# Workspaces:
+#########################
+
+# Switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+#########################
+# Layout: 
+#########################
+
+bindsym $mod+Shift+v split h
+bindsym $mod+v split v
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+d focus mode_toggle
+
+bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child 
+
+#########################
+# Scratchpad: 
+#########################
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window
+bindsym $mod+minus scratchpad show
+
+#########################
+# Resizing containers: 
+#########################
+
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+    
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+    
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+#########################
+# Audio and brightness: 
+#########################
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+
+#########################
+# Lock and sleep: 
+#########################
+
+bindsym $sup+l exec $run_lock
+bindsym $sup+s exec systemctl suspend
+
+#########################
+# Remap capslock: 
+#########################
+
+exec_always --no-startup-id setxkbmap -option ctrl:nocaps
+
+#########################
+# Others:: 
+#########################
+
+bindsym $mod+t exec "xinput disable 'DELL08E1:00 06CB:CD97 Touchpad' || xinput enable 'DELL08E1:00 06CB:CD97 Touchpad'"
+
+bindsym $sup+w exec $change_wallpaper
+
+###############################################################################
+### Aesthetics
+###############################################################################
+
+# i3 doesn't support direct configurations for border, gaps, or title format.
+# You might want to use a tool like `i3-gaps` for configuring gaps.
+
+# client.focused    $color3  $color3      $foreground $foreground $color3
+
+# Configuration for borders and gaps would go in ~/.config/i3/config if using i3-gaps
+
+###############################################################################
+### Rules
+###############################################################################
+
+# Translations of floating rules to i3 format
+for_window [class="kitty-floating"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [class="gnome-control-center"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Blueman-manager"] floating enable
