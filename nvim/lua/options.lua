@@ -44,4 +44,9 @@ vim.keymap.set("n", "<leader>ss", ":wa<CR>", { noremap = true })
 -- required for debugging with DAP
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
--- Set the colorscheme
+if vim.g.vscode then
+	vim.keymap.set("n", "<leader>ca", function()
+		local vscode = require("vscode")
+		vscode.action("editor.action.codeAction")
+	end)
+end

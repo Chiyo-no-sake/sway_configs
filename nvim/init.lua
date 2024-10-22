@@ -22,6 +22,20 @@ if file_exists("$HOME/.config/nvim/lua/custom.lua") then
 end
 
 -- require the plugins setup
-require("lazy").setup("plugins")
+require("lazy").setup({
+	{ import = "plugins", cond = "true" },
+	{
+		import = "plugins_vscode_only",
+		cond = function()
+			return vim.g.vscode
+		end,
+	},
+	{
+		import = "plugins_neovim_only",
+		cond = function()
+			return not vim.g.vscode
+		end,
+	},
+})
 
 vim.cmd("set termguicolors")
