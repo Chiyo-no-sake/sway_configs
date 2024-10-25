@@ -34,9 +34,6 @@ vim.cmd("set noru")
 -- exit from insert mode with jj
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true })
 
--- <leader>zz to save and quit
-vim.keymap.set("n", "<leader>zz", ":wa<CR>:qa<CR>", { noremap = true })
-
 -- <leader>ss to save everything
 vim.keymap.set("n", "<leader>ss", ":wa<CR>", { noremap = true })
 
@@ -44,9 +41,4 @@ vim.keymap.set("n", "<leader>ss", ":wa<CR>", { noremap = true })
 -- required for debugging with DAP
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
-if vim.g.vscode then
-	vim.keymap.set("n", "<leader>ca", function()
-		local vscode = require("vscode")
-		vscode.action("editor.action.codeAction")
-	end)
-end
+require("options_neovim_only")
