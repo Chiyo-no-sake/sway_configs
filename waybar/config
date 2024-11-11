@@ -1,137 +1,73 @@
 {
-    "layer": "top",
-    "position": "top",
-    "height": 24,
-    "reload-style-on-change": true,
-    "modules-left": [],
-    "modules-center": ["sway/workspaces", "custom/scratchpad-indicator"],
-    "modules-right": [
-	"tray",
-	"custom/separator",
-	"sway/language",
-	"custom/separator",
-	"network",
-	"custom/separator",
-	"pulseaudio", 
-	"custom/separator", 
-	"backlight", 
-	"custom/separator", 
-	"battery", 
-	"custom/separator", 
-	"clock"
-    ],
-    "bluetooth": {
-	"format": " {status}",
-	"format-connected": " {device_alias}",
-	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
-	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
-	"tooltip-format": "{}",
-	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-	"on-click": "blueman"
-    }, 
-    "sway/language": {
-    	"format": "{flag}",
-    	"on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "width": "100%", // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["hyprland/workspaces", "hyprland/submap"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["custom/emoji", "pulseaudio", "backlight", "battery", "tray", "clock"],
+    "hyprland/workspaces": {
+         //"format": " {icon} ",
+         //"format-icons": {
+         //    "default": "",
+         //},
+     },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 5
     },
-    "idle_inhibitor": {
-	"format": "{icon}",
-	"format-icons": {
-		"activated": "",
-		"deactivated": ""
-	}
-    },
-    "sway/window": {
+    "custom/music": {
+        "format": "  {}",
+        "escape": true,
+        "tooltip": false,
+        "exec": "playerctl metadata --format='{{ title }}'",
+        "on-click": "playerctl play-pause",
         "max-length": 50
     },
-	
+    "custom/emoji": {
+        "format": "",
+        "escape": "true",
+        "on-click": "BEMOJI_PICKER_CMD=\"fuzzel --font CaskaydiaCove Nerd Font Propo -d\" bemoji"
+    },
+    "clock": {
+        "timezone": "Europe/Rome",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "󰃶 {:%d/%m/%Y}",
+        "format": " {:%H:%M}"
+    },
     "backlight": {
-	"device": "intel_backlight",
-	"format": "{icon} {percent}%",
-	"format-icons": ["", ""]
+        "format": " {percent}%"
     },
-    "custom/separator": {
-        "format": "|",
-        "interval": "once",
-        "tooltip": false
-    },
-    "custom/scratchpad-indicator": {
-      "interval": 1,
-      "return-type": "json",
-      "format" : "{icon}",
-      "format-icons": {
-      "none": "",
-        "one": "",
-        "many": "",
-        "unknown": ""
-      },
-      "exec": "~/.config/waybar/modules/sway-scratch.sh",
-      "exec-if": "exit 0",
-      "on-click": "swaymsg scratchpad show",
-      "on-click-right": "swaymsg move window to scratchpad",
-      "tooltip": false
-    },
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{name}",
-    },
-    "network": {
-        "format-wifi": " {signalStrength}%",
-        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
-        "format-linked": " {ifname} (No IP)",
-        "format-disconnected": "⚠ Dis",
-	"on-click": "kitty --class kitty-floating nmtui"
-    },
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}%",
-        "format-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", ""]
-        },
-        "scroll-step": 1,
-        "on-click": "pavucontrol"
-    },
-
     "battery": {
         "states": {
-            "warning": 20,
-            "critical": 10
+            "warning": 30,
+            "critical": 15
         },
-        "format": "{icon} {capacity}%",
-        "format-icons": ["", "", "", "", ""]
+        "format": "{icon} {capacity}",
+        "format-charging": "󰂅",
+        "format-plugged": "󰚥",
+        "format-alt": "{icon}",
+        "format-icons": ["󰂃", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
-
-    "clock": {
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "default": ["", " ", " "]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/mic": {
+        "exec": "~/.bin/volume-control/waybar-mic-status.sh",
         "interval": 1,
-        "format": " {:%H:%M  | %e %b %Y}",
-        "tooltip": false
+        "format": "{}",
+        "tooltip": true,
+        "on-click": "volume-control mic-mute",
     },
-
-    "cpu": {
-        "interval": 5,
-        "format": " {usage}% ({load})", // Icon: microchip
-        "states": {
-            "warning": 70,
-            "critical": 90
-        }
-    },
-
-    "memory": {
-        "interval": 30,
-        "format": " {used:0.1f}G/{total:0.1f}G"
-    },
-
-    "tray": {
-        "icon-size": 20,
-        "spacing": 5
+    "custom/lock": {
+        "tooltip": false,
+        "on-click": "sh -c '(sleep 0.5s; swaylock --grace 0)' & disown",
+        "format": "",
     },
 }

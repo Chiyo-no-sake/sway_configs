@@ -16,7 +16,7 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
-vim.opt.showmode = false
+vim.opt.showmode = true
 vim.opt.cc = "80"
 vim.opt.breakindent = true
 vim.opt.ignorecase = true
@@ -41,4 +41,8 @@ vim.keymap.set("n", "<leader>ss", ":wa<CR>", { noremap = true })
 -- required for debugging with DAP
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
-require("options_neovim_only")
+if vim.g.vscode then
+	require("options_vscode_only")
+else
+	require("options_neovim_only")
+end
