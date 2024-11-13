@@ -181,7 +181,7 @@ return {
 				"xmlformatter",
 				"volar",
 				"yamlls",
-				"tsserver",
+				"typescript-language-server",
 			})
 
 			require("mason-tool-installer").setup({

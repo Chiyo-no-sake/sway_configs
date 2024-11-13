@@ -1,167 +1,102 @@
-@import url("/home/luca/.cache/wal/colors-waybar.css");
+@import "macchiato.css";
 
 * {
-    border: none;
-    border-radius: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
-    font-size: 9.5pt;
+  font-family: CaskaydiaCove Nerd Font Propo;
+  font-size: 11pt;
+  min-height: 0;
 }
 
 #waybar {
-    background-color: rgba(19, 13, 13, 0.5);
-    color: white;
-    font-family: FontAwesome, SF Pro Text Regular, Cantarell, Noto Sans, sans-serif;
-    font-size: 9.5pt;
+  background: alpha(@base, 0.5);
+  color: @text;
+  margin: 0px 0px;
 }
 
-#window,
-#workspaces,
-#backlight,
-#custom-scratchpad-indicator,
-#custom-keyboard-layout,
-#custom-weather,
-#clock,
-#battery,
-#cpu,
-#memory,
-#temperature,
-#network,
-#pulseaudio,
-#tray,
-#mode,
-#idle_inhibitor {
-    padding-left: 4px;
-    padding-right: 4px;
+#workspaces {
+  margin: 3px;
+  background: rgba(0,0,0,0);
+  margin-left: 20px;
 }
 
-#workspaces button.focused,
-#backlight,
-#custom-keyboard-layout,
-#battery,
-#cpu,
-#bluetooth,
-#memory,
-#temperature,
-#network,
-#pulseaudio,
-#sway-language,
-#trayR {
-    border-bottom: 2.5px solid;
-}
-
-/* ---Left--- */
 #workspaces button {
-    padding-left: 4px;
-    padding-right: 4px;
-    color: #ffffff;
+  border-radius: 0px;
+  color: @lavender;
+  padding: 0.1rem 0.2rem;
+  border-bottom: solid 2px @text;
+}
+
+#workspaces button.active {
+  color: @red;
+  border-bottom: solid 2px @red;
 }
 
 #workspaces button:hover {
-    background: rgb(61, 56, 56);
-    box-shadow: inherit;
+  color: @blue;
 }
 
-#workspaces button.focused {
-    border-bottom-color: @color1;
-    background-color: @background;
-}
-
-#workspaces button.urgent {
-    background-color: @color10;
-    color: @color1;
-}
-
-#custom-scratchpad-indicator{
-    margin-left: 8px;
-}
-
-#idle_inhibitor.activated {
-    background-color: rgb(45, 52, 54);
-}
-/* ---------- */
-
-/* ---Center--- */
-#mode {
-    background-color: @background;
-}
-/* ---------- */
-
-/* ---Right--- */
-#custom-keyboard-layout,
+#custom-music,
+#tray,
 #backlight,
+#clock,
+#battery,
 #pulseaudio,
-#network,
-#bluetooth,
+#custom-mic,
+#custom-lock,
+#custom-emoji,
+#custom-power {
+  background-color: @bg;
+  padding: 0.1rem 1rem;
+  margin: 0px 6px;
+  border-bottom: solid 2px @text;
+}
+
+#clock {
+  color: @blue;
+  margin-right: 20px;
+}
+
 #battery {
-    border-bottom-color: @color1;
-}
-
-label:focus {
-    background-color: @background;
-}
-
-@keyframes blink {
-    to {
-        background-color: @color12;
-        color: @color1;
-    }
-}
-
-#battery.discharging.critical {
-    background-color: rgb(116, 58, 58);
-    color: #ffffff; 
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#battery.discharging.warning {
-    background-color: rgb(141, 120, 49);
-    color: #ffffff; 
+  color: @green;
 }
 
 #battery.charging {
-    color: #ffffff; 
-    background-color: rgb(37, 68, 50);
+  color: @green;
 }
 
-#cpu,
-#memory {
-    border-bottom-color: #0c6d1a;
+#battery.warning:not(.charging) {
+  color: @red;
 }
 
-#cpu.warning {
-    background-color: rgb(141, 120, 49);
-    color: #ffffff; 
+#backlight {
+  color: @yellow;
 }
 
-#cpu.critical {
-    background-color: rgb(116, 58, 58);
-    color: #ffffff; 
+#backlight, #battery {
+}
+
+#pulseaudio {
+  color: @maroon;
+}
+
+#custom-music {
+  color: @mauve;
+}
+
+#custom-lock {
+    color: @lavender;
+}
+
+#custom-power {
+    color: @red;
+}
+
+#custom-mic {
+    color: #55ff55; /* Default color for unmuted */
+}
+
+#custom-mic {
+    color: #ff5555; /* Red for muted */
 }
 
 #tray {
-    border-bottom-color: @color1;
-    margin-right: 2px;
 }
-/* ---------- */
-
-#custom-separator {
-    color: rgba(19, 13, 13, 0.0);
-    margin: 0 3px;
-}
-
-#window {
-    margin-right: 8px;
-}
-
-#window #waybar.hidden {
-    opacity: 0.2;
-}
-
-
